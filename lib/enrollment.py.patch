@@ -1,19 +1,16 @@
-from datetime import datetime
-
+def __init__(self, name):
+        self.name = name
+        self._enrollments = []
+=======
 class Student:
     def __init__(self, name):
         self.name = name
         self._enrollments = []
         self._grades = {}  # Placeholder for grades, key: Enrollment, value: grade
-
-    def enroll(self, course):
-        if isinstance(course, Course):
-            enrollment = Enrollment(self, course)
-            self._enrollments.append(enrollment)
-            course.add_enrollment(enrollment)
-        else:
-            raise TypeError("course must be an instance of Course")
-
+<<<<<<< SEARCH
+    def get_enrollments(self):
+        return self._enrollments.copy()
+=======
     def get_enrollments(self):
         return self._enrollments.copy()
 
@@ -29,21 +26,22 @@ class Student:
         num_courses = len(self._grades)
         average_grade = total_grades / num_courses
         return average_grade
+<<<<<<< SEARCH
+class Enrollment:
+    all = []
 
-class Course:
-    def __init__(self, title):
-        self.title = title
-        self._enrollments = []
-
-    def add_enrollment(self, enrollment):
-        if isinstance(enrollment, Enrollment):
-            self._enrollments.append(enrollment)
+    def __init__(self, student, course):
+        if isinstance(student, Student) and isinstance(course, Course):
+            self.student = student
+            self.course = course
+            self._enrollment_date = datetime.now()
+            type(self).all.append(self)
         else:
-            raise TypeError("enrollment must be an instance of Enrollment")
+            raise TypeError("Invalid types for student and/or course")
 
-    def get_enrollments(self):
-        return self._enrollments.copy()
-
+    def get_enrollment_date(self):
+        return self._enrollment_date
+=======
 class Enrollment:
     all = []
 
